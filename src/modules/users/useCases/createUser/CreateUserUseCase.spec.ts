@@ -1,14 +1,14 @@
 import { InMemoryUsersRepository } from "../../repositories/in-memory/InMemoryUsersRepository";
 import { CreateUserUseCase } from "./CreateUserUseCase"
 
-let createUser: CreateUserUseCase;
+let createUserUseCase: CreateUserUseCase;
 let inMemoryUsersRespository: InMemoryUsersRepository;
 
 describe("Create a new User", () => {
 
   beforeEach(()=>{
     inMemoryUsersRespository = new InMemoryUsersRepository();
-    createUser = new CreateUserUseCase(inMemoryUsersRespository);
+    createUserUseCase = new CreateUserUseCase(inMemoryUsersRespository);
   })
 
   it('Should be able to create a new User', async () => {
@@ -18,7 +18,7 @@ describe("Create a new User", () => {
       password: "123456",
      }
 
-     await createUser.execute({
+     await createUserUseCase.execute({
       name: user.name,
       email: user.email,
       password: user.password,
